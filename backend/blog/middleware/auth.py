@@ -2,7 +2,7 @@ import json
 
 from django.http import HttpResponse
 
-from blog.services.auth import is_auth_token_valid, get_decoded_jwt_user
+from blog.services.auth import is_auth_token_valid, get_decoded_jwt_token
 from blog.services.exceptions import InvalidJWTException
 
 
@@ -22,7 +22,7 @@ class OpenIDAccessMiddleware:
                 )
             token = token[7:]
             try:
-                request.jwt_user = get_decoded_jwt_user(token)
+                request.jwt_user = get_decoded_jwt_token(token)
             except InvalidJWTException as e:
                 return HttpResponse(
                     content=json.dumps({'detail': e.message}),
