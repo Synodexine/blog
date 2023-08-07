@@ -11,3 +11,13 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Report(models.Model):
+    user_email = models.EmailField()
+    text = models.TextField(blank=False)
+    responded = models.BooleanField(default=False)
+    creation_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.text
