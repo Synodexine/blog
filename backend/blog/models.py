@@ -7,7 +7,7 @@ class Article(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
-    views_qty = models.IntegerField()
+    views_qty = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title

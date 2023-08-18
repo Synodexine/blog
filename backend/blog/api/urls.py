@@ -10,4 +10,7 @@ router.register(r'reports', ReportViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('get-token', AuthAPIView.as_view()),
+    path('refresh-token', RefreshTokenAPIView.as_view()),
+    path('very-token', TokenVerificationView.as_view())
 ]
